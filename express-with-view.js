@@ -60,9 +60,9 @@ app.post('/', upload.single('image'), (req, res) => {
   }, { /*categorization: 'imagga_tagging',
       auto_tagging: 0.4,*/
        eager: [
-        // {width: 150, height: 100, crop: "thumb", gravity: "face"},
-        {width: 150, height: 100, quality: 'auto'},
-        {[width: 150, height: 100, quality: 'auto'], [overlay: 'cloudinary_icon.png', gravity: 'south_east']},
+        {width: 150, height: 100, crop: 'thumb', gravity: 'face', radius: 'max'},
+        // {width: 150, height: 100, quality: 'auto'},
+        {width: 150, height: 100, quality: 'auto', overlay: 'cloudinary_icon.png', gravity: 'south_east'},
         {width: 400, height: 300, quality: 'auto'}
      ]});
 });
