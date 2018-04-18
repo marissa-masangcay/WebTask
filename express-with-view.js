@@ -1,7 +1,7 @@
 const multer = require('multer');
 const cloudinary = require('cloudinary');
-const Webtask    = require('webtask-tools');
-const express    = require('express');
+const Webtask = require('webtask-tools');
+const express = require('express');
 const app = express();
 
 const upload = multer({
