@@ -106,8 +106,7 @@ function renderUploadView(locals) {
      <p>Original Image</p>
      <img src="${locals.file.url}"/>
      <p>Thumbnail Image</p>
-     <p>eager url = ${locals.file.eager[0].url}</p>
-     <img src="${locals.file.eager["url"]}"/>
+     <img src="${locals.file.eager[0].url}"/>
     </body>
     </html>
   `;
