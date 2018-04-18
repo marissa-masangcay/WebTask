@@ -62,6 +62,7 @@ app.post('/', upload.single('image'), (req, res) => {
        eager: [
         // {width: 150, height: 100, crop: "thumb", gravity: "face"},
         {width: 150, height: 100, quality: 'auto'},
+        {width: 150, height: 100, quality: 'auto', [overlay: 'cloudinary_icon.png', gravity: 'south_east']},
         {width: 400, height: 300, quality: 'auto'}
      ]});
 });
@@ -107,8 +108,10 @@ function renderUploadView(locals) {
      <p>Tags = ${locals.file.tags}</p>
      <p>Thumbnail Image</p>
      <img src="${locals.file.eager[0].url}"/>
-     <p>Quality Auto Image</p>
+     <p>Watermark Icon</p>
      <img src="${locals.file.eager[1].url}"/>
+     <p>Quality Icon</p>
+     <img src="${locals.file.eager[2].url}"/>
      <p>Original Image</p>
      <img src="${locals.file.url}"/>
     </body>
