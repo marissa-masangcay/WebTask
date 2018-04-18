@@ -4,6 +4,7 @@ const Webtask = require('webtask-tools');
 const express = require('express');
 const app = express();
 
+//Form-Data Middleware
 const upload = multer({
   'storage': multer.diskStorage({
     filename: (req, file, cb) => {
@@ -19,6 +20,7 @@ const upload = multer({
   }
 });
 
+//Set config
 app.use((req, res, next) => {
   const context = req.webtaskContext;
 
@@ -27,13 +29,13 @@ app.use((req, res, next) => {
     'api_key': context.secrets.api_key,
     'api_secret': context.secrets.api_secret
   });
-
+  
   context.uploader = cloudinary.uploader;
 
   next();
 });
 
-//Original view
+//Original view and GET request
 app.get('/', (req, res) => {
   const HTML = renderView({
     title: 'My WebTask App',
@@ -44,7 +46,7 @@ app.get('/', (req, res) => {
   res.status(200).send(HTML);
 });
 
-//Upload Call
+//Upload Call and POST request
 app.post('/', upload.single('image'), (req, res) => {
   const context = req.webtaskContext;
 
@@ -60,10 +62,10 @@ app.post('/', upload.single('image'), (req, res) => {
   }, { /*categorization: 'imagga_tagging',
       auto_tagging: 0.4,*/
        eager: [
-        {width: 150, height: 100, crop: 'thumb', gravity: 'face', radius: 'max'},
+        {width: 150, height: 150, crop: 'thumb', gravity: 'face', radius: 'max'},
         // {width: 150, height: 100, quality: 'auto'},
         {width: 150, height: 100, quality: 'auto', overlay: 'cloudinary_icon.png', gravity: 'south_east'},
-        {width: 400, height: 300, quality: 'auto'}
+        {width: 500, height: 350, quality: 'auto', effect: 'grayscale'}
      ]});
 });
 
@@ -110,7 +112,7 @@ function renderUploadView(locals) {
      <img src="${locals.file.eager[0].url}"/>
      <p>Watermark Icon</p>
      <img src="${locals.file.eager[1].url}"/>
-     <p>Quality Icon</p>
+     <p>Grayscale Image</p>
      <img src="${locals.file.eager[2].url}"/>
      <p>Original Image</p>
      <img src="${locals.file.url}"/>
