@@ -105,6 +105,5 @@ function renderUploadView(locals) {
   `;
 }
 
-//Here is a test example
 
 module.exports = Webtask.fromExpress(app);
