@@ -60,7 +60,8 @@ app.post('/', upload.single('image'), (req, res) => {
   }, { /*categorization: 'imagga_tagging',
        auto_tagging: 0.4,*/
        eager: {
-        width: 150, height: 100, crop: "thumb", gravity: "face"}
+        // width: 150, height: 100, crop: "thumb", gravity: "face"}
+        width: 150, height: 100, crop: "thumb"}
   });
 });
 
