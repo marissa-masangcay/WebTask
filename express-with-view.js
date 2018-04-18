@@ -57,7 +57,7 @@ app.post('/', upload.single('image'), (req, res) => {
       resp: resp,
       file: file
     }));
-  }, { 'categorization': 'imagga_tagging'});
+  }, { categorization: 'imagga_tagging', auto_tagging: 0.4});
 });
 
 //Original View
