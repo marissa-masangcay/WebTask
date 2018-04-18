@@ -57,8 +57,8 @@ app.post('/', upload.single('image'), (req, res) => {
       resp: resp,
       file: file
     }));
-  }, { categorization: 'imagga_tagging',
-       auto_tagging: 0.4,
+  }, { /*categorization: 'imagga_tagging',
+       auto_tagging: 0.4,*/
        eager: {
         width: 150, height: 100, crop: "thumb", gravity: "face"}
   });
