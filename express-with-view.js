@@ -105,6 +105,10 @@ function renderUploadView(locals) {
      <p>Public ID = ${locals.file.public_id}</p>
      <p>URL = ${locals.file.url}</p>
      <p>Tags = ${locals.file.tags}</p>
+     <p>Thumbnail Image</p>
+     <img src="${locals.file.eager[0].url}"/>
+     <p>Quality and Format Image</p>
+     <img src="${locals.file.eager[1].url}"/>
      <p>Original Image</p>
      <img src="${locals.file.url}"/>
     </body>
