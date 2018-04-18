@@ -30,7 +30,7 @@ app.use((req, res, next) => {
 
   context.uploader = cloudinary.uploader;
 
-  // next();
+  next();
 });
 
 //Original view
