@@ -52,7 +52,7 @@ app.post('/', upload.single('image'), (req, res) => {
     var resp = JSON.stringify(file, null, 2);
     res.setHeader("content-type", "text/html");
     res.send(renderUploadView({
-      title: 'Cloudinary Upload', 
+      title: 'Cloudinary Upload',
       body: '<h2>Success!</h2>',
       resp: resp,
       file: file
