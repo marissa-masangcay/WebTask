@@ -59,12 +59,11 @@ app.post('/', upload.single('image'), (req, res) => {
       resp: resp,
       file: file
     }));
-  }, { /*categorization: 'imagga_tagging',
-      auto_tagging: 0.4,*/
+  }, { categorization: 'imagga_tagging',
+      auto_tagging: 0.4,
        eager: [
         {width: 150, height: 150, crop: 'thumb', gravity: 'face', radius: 'max'},
-        // {width: 150, height: 100, quality: 'auto'},
-        {width: 150, height: 100, quality: 'auto', overlay: 'cloudinary_icon.png', gravity: 'south_east'},
+        {transformation: [{width: 500, height: 350, crop: 'fill'}, {overlay: 'cloudinary_icon.png', gravity: 'south_east', width:150}, {quality: 'auto'}]},
         {width: 500, height: 350, quality: 'auto', effect: 'grayscale'}
      ]});
 });
@@ -110,7 +109,7 @@ function renderUploadView(locals) {
      <p>Tags = ${locals.file.tags}</p>
      <p>Thumbnail Image</p>
      <img src="${locals.file.eager[0].url}"/>
-     <p>Watermark Icon</p>
+     <p>Watermark Icon Image</p>
      <img src="${locals.file.eager[1].url}"/>
      <p>Grayscale Image</p>
      <img src="${locals.file.eager[2].url}"/>
